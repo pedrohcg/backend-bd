@@ -1,0 +1,24 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2021.05.15"]
+[Round "?"]
+[White "lSigl"]
+[Black "PS_Laplace"]
+[Result "1-0"]
+[ECO "C26"]
+[WhiteElo "1011"]
+[BlackElo "1000"]
+[TimeControl "600"]
+[EndTime "20:16:37 PDT"]
+[Termination "lSigl won by checkmate"]
+
+1. e4 Nf6 2. Nc3 e5 3. Nf3 Bc5 4. Nxe5 d6 5. Ng4 Bxg4 6. f3 Be6 7. d4 Bb6 8. Bg5
+Nc6 9. Bb5 a6 10. Bxc6+ bxc6 11. e5 dxe5 12. dxe5 Qxd1+ 13. Rxd1 Nd5 14. Nxd5
+cxd5 15. a4 O-O 16. b4 c5 17. a5 Bc7 18. bxc5 Bxa5+ 19. Kf2 Rac8 20. Be7 Rfe8
+21. Bd6 Bc7 22. Rhe1 Ba5 23. Re3 Bb4 24. f4 Bxc5 25. Bxc5 Rxc5 26. Rc1 d4 27.
+Ra3 d3 28. Rxd3 Bc4 29. Rc3 Rd8 30. Ra1 Rd2+ 31. Ke3 Rxc2 32. Rxc2 g6 33. Kd4
+Rc8 34. Rxc4 Rxc4+ 35. Kxc4 Kg7 36. Rxa6 h5 37. h3 Kf8 38. g4 hxg4 39. hxg4 Ke7
+40. Ra7+ Ke6 41. Kd4 f5 42. gxf5+ gxf5 43. Ra6+ Ke7 44. Rf6 Kd7 45. Rxf5 Ke6 46.
+Rf6+ Ke7 47. Kd5 Ke8 48. e6 Ke7 49. Ke5 Ke8 50. Rf7 Kd8 51. Kf6 Ke8 52. e7 Kd7
+53. Rf8 Kd6 54. e8=Q Kd5 55. Qe5+ Kc4 56. Rd8 Kb4 57. Qc7 Kb5 58. Rb8+ Ka6 59.
+Qb6# 1-0

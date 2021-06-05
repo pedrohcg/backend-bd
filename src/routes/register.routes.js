@@ -15,14 +15,14 @@ registerRouter.post('/', jsonParser, async(req, res) => {
         const userExists = await mssql.query(`SELECT 1 FROM Usuario WHERE Email = '${req.body.Email}'`)
 
         if(userExists.rowsAffected[0]){
-            throw new Error('Usuário já cadastrado');
+            return res.json('Usuário já cadastrado');
         }
 
         const hashedPassword = await hash(req.body.Senha, 8);
 
         await mssql.query(`INSERT INTO Usuario (Nome, Email, Senha) VALUES ('${req.body.Nome}', '${req.body.Email}', '${hashedPassword}')`);
 
-        res.send('Usuário cadastrado');
+        return es.json('Usuário cadastrado com sucesso');
     }catch(err) {
         console.log(err);
     }
