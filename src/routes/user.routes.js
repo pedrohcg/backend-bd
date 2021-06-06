@@ -57,6 +57,20 @@ userRouter.get('/profile', confirmarToken, async (req, res) => {
 userRouter.post('/pgn', confirmarToken, lerPgn, async(req, res) => {
     //res.send(req.info);
     res.send(req.movimentos);
+
+    await mssql.connect(SqlServerConfig);
+
+    const mov = await mssql.query(`INSERT INTO teste (mov) VALUES ('${req.movimentos}')`);
+})
+
+userRouter.post('/teste', confirmarToken, async (req, res) => {
+    await mssql.connect(SqlServerConfig);
+
+    const mov = await mssql.query(`SELECT TOP 1 mov FROM teste`);
+
+    const array = mov.recordset[0].mov.split(',');
+
+    res.send(array[1])
 })
 
 export default userRouter;
