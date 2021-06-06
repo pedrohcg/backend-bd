@@ -1,9 +1,10 @@
-import {Router} from 'express';
+import pkg from 'express';
 
 import registerRouter from './register.routes.js';
 import userRouter from './user.routes.js';
 import preencherAberturasRouter from './preencheraberturas.routes.js';
 
+const {Router} = pkg;
 const routes = Router();
 
 routes.use('/register', registerRouter);

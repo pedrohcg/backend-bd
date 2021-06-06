@@ -1,5 +1,5 @@
-import {Router} from 'express';
-import {compare} from 'bcrypt';
+import exp from 'express';
+import bcpt from 'bcrypt';
 import pkg from 'jsonwebtoken';
 import bodyParser from 'body-parser';
 
@@ -10,6 +10,9 @@ import confirmarToken from '../middlewares/autenticar.js';
 import lerPgn from '../middlewares/pgn.js'
 import authConfig from '../config/authConfig.js';
 
+
+const {Router} = exp;
+const {compare} = bcpt;
 const userRouter = Router();
 const jsonParser = bodyParser.json();
 const {sign} = pkg

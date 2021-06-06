@@ -1,9 +1,12 @@
-import {Router} from 'express';
-import {hash} from 'bcrypt';
+import exp from 'express';
+import pkg from 'bcrypt';
 import bodyParser from 'body-parser';
 
 import mssql from 'mssql';
 import SqlServerConfig from '../config/sqlserverconfig.js';
+
+const {hash} = pkg;
+const {Router} = exp;
 
 const registerRouter = Router();
 const jsonParser = bodyParser.json();

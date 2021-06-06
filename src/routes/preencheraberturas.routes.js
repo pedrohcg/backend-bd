@@ -1,8 +1,10 @@
-import {Router} from 'express';
+import pkg from 'express';
 import parser from 'chess-pgn-parser';
 
 import mssql from 'mssql';
 import SqlServerConfig from '../config/sqlserverconfig.js';
+
+const {Router} = pkg;
 
 const preencherAberturasRouter = Router();
 
