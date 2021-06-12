@@ -76,4 +76,16 @@ userRouter.post('/teste', confirmarToken, async (req, res) => {
     res.send(array[1])
 })
 
+userRouter.post('/aaaaaaaaaaaaaa',confirmarToken,lerPgn, async(req, res) => {
+
+    const qtdMovimentos = req.movimentos.length;
+
+    await mssql.connect(SqlServerConfig);
+
+    const mov = await mssql.query(`INSERT INTO Partidas (Resultado,Evento,Website,DataEvento,Id_Abertura,Jogador_Brancas,Jogador_Pretas,Quantidade_Movimentos,Movimentos) VALUES ('${req.info.Result}','${req.info.Event}','${req.info.Site}','${req.info.Date}',1,'${req.info.White}','${req.info.Black}','${qtdMovimentos}','${req.movimentos}')`);
+
+   res.send("Sebola")
+
+})
+
 export default userRouter;
