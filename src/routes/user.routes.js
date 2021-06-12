@@ -7,7 +7,7 @@ import mssql from 'mssql';
 import SqlServerConfig from '../config/sqlserverconfig.js';
 
 import confirmarToken from '../middlewares/autenticar.js';
-import lerPgn from '../middlewares/pgn.js'
+import lerPgn from '../middlewares/pgn.js';
 import authConfig from '../config/authConfig.js';
 
 
@@ -64,28 +64,6 @@ userRouter.post('/pgn', confirmarToken, lerPgn, async(req, res) => {
     await mssql.connect(SqlServerConfig);
 
     const mov = await mssql.query(`INSERT INTO teste (mov) VALUES ('${req.movimentos}')`);
-})
-
-userRouter.post('/teste', confirmarToken, async (req, res) => {
-    await mssql.connect(SqlServerConfig);
-
-    const mov = await mssql.query(`SELECT TOP 1 mov FROM teste`);
-
-    const array = mov.recordset[0].mov.split(',');
-
-    res.send(array[1])
-})
-
-userRouter.post('/aaaaaaaaaaaaaa',confirmarToken,lerPgn, async(req, res) => {
-
-    const qtdMovimentos = req.movimentos.length;
-
-    await mssql.connect(SqlServerConfig);
-
-    const mov = await mssql.query(`INSERT INTO Partidas (Resultado,Evento,Website,DataEvento,Id_Abertura,Jogador_Brancas,Jogador_Pretas,Quantidade_Movimentos,Movimentos) VALUES ('${req.info.Result}','${req.info.Event}','${req.info.Site}','${req.info.Date}',1,'${req.info.White}','${req.info.Black}','${qtdMovimentos}','${req.movimentos}')`);
-
-   res.send("Sebola")
-
 })
 
 export default userRouter;

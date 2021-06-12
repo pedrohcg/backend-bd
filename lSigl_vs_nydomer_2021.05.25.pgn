@@ -1,0 +1,18 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2021.05.25"]
+[Round "?"]
+[White "lSigl"]
+[Black "nydomer"]
+[Result "0-1"]
+[ECO "B23"]
+[WhiteElo "989"]
+[BlackElo "1043"]
+[TimeControl "600"]
+[EndTime "16:15:17 PDT"]
+[Termination "nydomer won by resignation"]
+
+1. e4 c5 2. Nc3 d6 3. Bc4 e6 4. Nf3 Nf6 5. d3 e5 6. Bg5 Bg4 7. Bd5 Bxf3 8. Qxf3
+Qd7 9. Bxf6 gxf6 10. Qxf6 Rg8 11. O-O Bg7 12. Qg5 h6 13. Qg3 Na6 14. a3 Qb5 15.
+Bc4 Qxb2 16. Nb5 Qxc2 17. Nxd6+ Ke7 18. Nf5+ Kf8 19. Rac1 Qd2 20. Nxg7 Rxg7 21.
+Qxe5 Re8 22. Qd6+ Kg8 23. Qxh6 Qxh6 0-1

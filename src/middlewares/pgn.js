@@ -1,8 +1,11 @@
 import parser from 'chess-pgn-parser';
 import fs from 'fs';
+import bodyParser from 'body-parser';
+
+const jsonParser = bodyParser.json();
 
 export default function lerPgn(req, res, next){
-    fs.readFile('lSigl_vs_PS_Laplace_2021.05.15.pgn', 'utf8', (err, data) => {
+    fs.readFile(req.body.arquivo, 'utf8', (err, data) => {
         if(err){
             return console.log(err);
         }
