@@ -25,7 +25,7 @@ registerRouter.post('/', jsonParser, async(req, res) => {
 
         await mssql.query(`INSERT INTO Usuario (Nome, Email, Senha) VALUES ('${req.body.Nome}', '${req.body.Email}', '${hashedPassword}')`);
 
-        return es.json('Usuário cadastrado com sucesso');
+        return res.json('Usuário cadastrado com sucesso');
     }catch(err) {
         console.log(err);
     }
