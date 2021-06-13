@@ -13,12 +13,6 @@ const jsonParser = bodyParser.json();
 
 partidasRouter.post('/procurar', confirmarToken, async (req, res) => {
     await mssql.connect(SqlServerConfig);
-
-    const mov = await mssql.query(`SELECT TOP 1 mov FROM teste`);
-
-    const array = mov.recordset[0].mov.split(',');
-
-    res.send(array[1])
 })
 
 partidasRouter.post('/cadastrar', jsonParser, confirmarToken, lerPgn, async (req, res) => {
@@ -82,7 +76,7 @@ partidasRouter.get('/favoritar', confirmarToken, async (req, res) => {
     await mssql.connect(SqlServerConfig);
 
     const favoritos = await mssql.query(`
-        SELECT P.Resultado, P.Evento, P.Website, P.DataEvento, A.Nome_Abertura, P.Jogador_Brancas, P.Jogador_Pretas, P.Quantidade_Movimentos, P.Movimentos
+        SELECT P.Id, P.Resultado, P.Evento, P.Website, P.DataEvento, A.Nome_Abertura, P.Jogador_Brancas, P.Jogador_Pretas, P.Quantidade_Movimentos
         FROM Usuario U
         INNER JOIN Jogos_Favoritos JF ON U.Id = JF.Id_Usuario
         INNER JOIN Partidas P ON JF.Id_Partida = P.Id 
@@ -93,4 +87,17 @@ partidasRouter.get('/favoritar', confirmarToken, async (req, res) => {
     res.send(favoritos.recordset)
 });
 
+partidasRouter.get('/movimentos', jsonParser, confirmarToken, async (req, res) => {
+    await mssql.connect(SqlServerConfig);
+
+    const mov = await mssql.query(`
+        SELECT Movimentos
+        FROM Partidas P
+        WHERE P.Id = ${req.body.idPartida} 
+    `);
+
+    const array = mov.recordset[0].Movimentos.split(',');
+
+    res.send(array)
+})
 export default partidasRouter;

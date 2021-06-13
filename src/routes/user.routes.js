@@ -57,13 +57,4 @@ userRouter.get('/profile', confirmarToken, async (req, res) => {
     return res.json(profile)
 })
 
-userRouter.post('/pgn', confirmarToken, lerPgn, async(req, res) => {
-    //res.send(req.info);
-    res.send(req.movimentos);
-
-    await mssql.connect(SqlServerConfig);
-
-    const mov = await mssql.query(`INSERT INTO teste (mov) VALUES ('${req.movimentos}')`);
-})
-
 export default userRouter;
