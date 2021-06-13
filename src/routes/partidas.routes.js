@@ -65,6 +65,16 @@ partidasRouter.post('/favoritar', jsonParser, confirmarToken, async (req, res) =
         return res.json('Partida Inválida')
     }
 
+    const partidaJaFavoritada = await mssql.query(`
+        SELECT 1 FROM Jogos_Favoritos
+        WHERE Id_Usuario = ${req.userId}
+        AND Id_Partida = ${req.body.idPartida}
+    `)
+
+    if(partidaJaFavoritada.rowsAffected[0]){
+        return res.json('Partida já adicionada as favoritas');
+    }
+
     await mssql.query(`
         INSERT INTO Jogos_Favoritos (Id_Usuario, Id_Partida) VALUES (${req.userId}, ${req.body.idPartida})
     `);
@@ -100,4 +110,5 @@ partidasRouter.get('/movimentos', jsonParser, confirmarToken, async (req, res) =
 
     res.send(array)
 })
+
 export default partidasRouter;

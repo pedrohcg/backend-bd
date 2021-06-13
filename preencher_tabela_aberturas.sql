@@ -17,7 +17,7 @@ INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Center Game',
 
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Sicilian Defense', 'e4,c5')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('French Defense', 'e4,e6')
-INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Caroâ€“Kann Defense', 'e4,c6')
+INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Caro–Kann Defense', 'e4,c6')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Alekhines Defense', 'e4,Nf6')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Pirc Defense', 'e4,d6,d4,Nf6,Nc3')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Modern Defense', 'e4,g6')
@@ -36,7 +36,7 @@ INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('London System
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Indian Defense', 'd4,Nf6')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Nimzo-Indian Defense', 'd4,Nf6,c4,e6,Nc3,Bb4')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Kings Indian Defense', 'd4,Nf6,c4,g6,Nc3,Bg7')
-INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('GrÃ¼nfeld Defense', 'd4,Nf6,c4,g6,Nc3,d5')
+INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Grünfeld Defense', 'd4,Nf6,c4,g6,Nc3,d5')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Queens Indian Defense', 'd4,Nf6,c4,e6,Nf3,b6')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Modern Benoni', 'd4,Nf6,c4,c5,d5,e6')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Budapest Gambit', 'd4,Nf6,c4,e5')
@@ -44,8 +44,10 @@ INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Old Indian De
 
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Dutch Defense', 'd4,f5')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Benoni Defense', 'd4,Nf6,c4,c5,d5')
-INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('RÃ©ti Opening', 'Nf3,d5,c4')
+INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Réti Opening', 'Nf3,d5,c4')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('English Opening', 'c4')
 INSERT INTO Aberturas (Nome_Abertura, Movimentos_Abertura) VALUES('Birds Opening', 'f4')
 
 SELECT * FROM Aberturas
+
+
