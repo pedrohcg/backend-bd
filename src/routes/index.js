@@ -8,7 +8,7 @@ const {Router} = pkg;
 const routes = Router();
 
 routes.use('/register', registerRouter);
-routes.use('/login', userRouter);
+routes.use('/user', userRouter);
 routes.use('/partidas', partidasRouter);
 
 export default routes;
