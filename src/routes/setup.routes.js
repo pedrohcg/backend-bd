@@ -39,7 +39,7 @@ setupRouter.post('/', async (req, res) => {
             Id_Abertura INT NOT NULL,
             Jogador_Brancas VARCHAR(255) NOT NULL,
             Jogador_Pretas VARCHAR(255) NOT NULL,
-            Quantidade_Movimentos INT NOT NULL,
+            Quantidade_Movimentos VARCHAR(4) NOT NULL,
             Movimentos VARCHAR(4000) NOT NULL,
             CONSTRAINT PK2 PRIMARY KEY CLUSTERED(Id),
             CONSTRAINT FK1 FOREIGN KEY (Id_Abertura) REFERENCES Aberturas(Id)
