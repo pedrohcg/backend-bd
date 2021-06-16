@@ -11,8 +11,26 @@ const {Router} = exp;
 const partidasRouter = Router();
 const jsonParser = bodyParser.json();
 
-partidasRouter.post('/procurar', confirmarToken, async (req, res) => {
+partidasRouter.post('/procurar',jsonParser, confirmarToken, async (req, res) => {
     await mssql.connect(SqlServerConfig);
+    
+    const resposta = await mssql.query(`
+    SELECT P.Id, P.Resultado, P.Evento, P.Website, P.DataEvento, P.Jogador_Brancas, P.Jogador_Pretas, P.Quantidade_Movimentos
+        FROM Partidas P
+        INNER JOIN Aberturas A
+        ON P.Id_Abertura = A.Id
+    WHERE P.Resultado = '${req.body.searchParam}'
+    OR P.DataEvento = '${req.body.searchParam}'
+    OR P.Jogador_Pretas = '${req.body.searchParam}'
+    OR P.Jogador_Brancas = '${req.body.searchParam}'
+    OR P.Quantidade_Movimentos = ${req.body.searchParam}
+    OR P.Website = '${req.body.searchParam}'
+    OR A.Nome_Abertura = '${req.body.searchParam}' 
+    
+    `)
+
+    res.send(resposta.recordset); 
+    
 })
 
 partidasRouter.post('/cadastrar', jsonParser, confirmarToken, lerPgn, async (req, res) => {
