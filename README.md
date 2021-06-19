@@ -27,6 +27,11 @@ Backend do projeto de banco de dados
   Espera apenas o token do usuário. Retorna array com todas as partidas favoritadas
   OBS: Não retorna movimentos das partidas, apenas seus ids
 
-<h1>/partidas/movimentos</h1>
-  Get
-  Espera token e id da partida. Retorna array com todos os movimentos da partida
+<h1>/partidas/procura</h1>
+  Get <br>
+  Recebe um parâmetro que pode ser tanto resultado, nome jogador pretas ou brancas, quantidade de movimentos, website, nome da abertura, data do jogo <br>
+  Retorna as informações das partidas como id, resultado, evento, website, data, jogadores, quantidade movimentos, nome abertura <br>
+  
+ <h1>/partidas/procura/id</h1>
+   Get <br>
+   Retorna as informações da partida que o id foi passado na url
