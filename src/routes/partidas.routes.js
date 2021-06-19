@@ -65,6 +65,10 @@ partidasRouter.get('/procurar/:id?',jsonParser, confirmarToken, async (req, res)
         OR A.Nome_Abertura = '${req.body.searchParam}'  
     `)
     }
+    
+    if(!resposta.rowsAffected[0]){
+        return res.json('Nenhuma patida encontrada');
+    }
 
     return res.send(resposta.recordset); 
     
