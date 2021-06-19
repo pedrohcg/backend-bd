@@ -10,26 +10,63 @@ import lerPgn from '../middlewares/pgn.js';
 const {Router} = exp;
 const partidasRouter = Router();
 const jsonParser = bodyParser.json();
+const rawParser = bodyParser.raw();
 
-partidasRouter.post('/procurar',jsonParser, confirmarToken, async (req, res) => {
+partidasRouter.get('/procurar/:id?',jsonParser, confirmarToken, async (req, res) => {
     await mssql.connect(SqlServerConfig);
+
+    if(req.params.id){
+        var mov = await mssql.query(`
+            SELECT P.Website, P.DataEvento, P.Jogador_Brancas, P.Jogador_Pretas, P.Movimentos, A.Nome_Abertura
+            FROM Partidas P
+            INNER JOIN Aberturas A
+            ON P.Id_Abertura = A.Id
+            WHERE P.Id = ${req.params.id} 
+        `);
+
+        if(!mov.rowsAffected[0]){
+            return res.json('Partida nao econtrada')
+        }
+
+        mov.recordset[0].Movimentos = mov.recordset[0].Movimentos.split(',');
+
+        return res.send(mov.recordset[0]);
+    }
+
+    var [dia, mes, ano] = req.body.searchParam.split('/');
+    var ehData = new Date(ano, mes, dia)
+    var resposta;
+
+    if(!isNaN(ehData)){
+        var stringData = ehData.toISOString();
+        var data;
     
-    const resposta = await mssql.query(`
-    SELECT P.Id, P.Resultado, P.Evento, P.Website, P.DataEvento, P.Jogador_Brancas, P.Jogador_Pretas, P.Quantidade_Movimentos
+        [data, ] = stringData.split('T');
+
+        resposta = await mssql.query(`
+            SELECT P.Id, P.Resultado, P.Evento, P.Website, P.DataEvento, P.Jogador_Brancas, P.Jogador_Pretas, P.Quantidade_Movimentos, A.Nome_Abertura
+            FROM Partidas P
+            INNER JOIN Aberturas A
+            ON P.Id_Abertura = A.Id
+            WHERE P.DataEvento = '${data}'
+        `)
+    }
+    else{
+        resposta = await mssql.query(`
+        SELECT P.Id, P.Resultado, P.Evento, P.Website, P.DataEvento, P.Jogador_Brancas, P.Jogador_Pretas, P.Quantidade_Movimentos, A.Nome_Abertura
         FROM Partidas P
         INNER JOIN Aberturas A
         ON P.Id_Abertura = A.Id
-    WHERE P.Resultado = '${req.body.searchParam}'
-    OR P.DataEvento = '${req.body.searchParam}'
-    OR P.Jogador_Pretas = '${req.body.searchParam}'
-    OR P.Jogador_Brancas = '${req.body.searchParam}'
-    OR P.Quantidade_Movimentos = ${req.body.searchParam}
-    OR P.Website = '${req.body.searchParam}'
-    OR A.Nome_Abertura = '${req.body.searchParam}' 
-    
+        WHERE P.Resultado = '${req.body.searchParam}'
+        OR P.Jogador_Pretas = '${req.body.searchParam}'
+        OR P.Jogador_Brancas = '${req.body.searchParam}'
+        OR P.Quantidade_Movimentos = '${req.body.searchParam}'
+        OR P.Website = '${req.body.searchParam}'
+        OR A.Nome_Abertura = '${req.body.searchParam}'  
     `)
+    }
 
-    res.send(resposta.recordset); 
+    return res.send(resposta.recordset); 
     
 })
 
@@ -114,19 +151,5 @@ partidasRouter.get('/favoritar', confirmarToken, async (req, res) => {
 
     res.send(favoritos.recordset)
 });
-
-partidasRouter.get('/movimentos', jsonParser, confirmarToken, async (req, res) => {
-    await mssql.connect(SqlServerConfig);
-
-    const mov = await mssql.query(`
-        SELECT Movimentos
-        FROM Partidas P
-        WHERE P.Id = ${req.body.idPartida} 
-    `);
-
-    const array = mov.recordset[0].Movimentos.split(',');
-
-    res.send(array)
-})
 
 export default partidasRouter;
