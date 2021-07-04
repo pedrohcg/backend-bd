@@ -12,7 +12,7 @@ const partidasRouter = Router();
 const jsonParser = bodyParser.json();
 const rawParser = bodyParser.raw();
 
-partidasRouter.get('/procurar/:id?',jsonParser, confirmarToken, async (req, res) => {
+partidasRouter.post('/procurar/:id?',jsonParser, confirmarToken, async (req, res) => {
     await mssql.connect(SqlServerConfig);
 
     if(req.params.id){
@@ -67,7 +67,7 @@ partidasRouter.get('/procurar/:id?',jsonParser, confirmarToken, async (req, res)
     }
     
     if(!resposta.rowsAffected[0]){
-        return res.json('Nenhuma patida encontrada');
+        return res.json('Nenhuma partida encontrada');
     }
 
     return res.send(resposta.recordset); 
